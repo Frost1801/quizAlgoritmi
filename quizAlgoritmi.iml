@@ -8,6 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="torodb.testing.oracle.junit.5" level="project" />
     <orderEntry type="library" name="junit" level="project" />
   </component>
 </module>

@@ -26,11 +26,17 @@ public class Question {
         this.description = description;
     }
 
+    public long getAnswerTime() {
+        return answerTime;
+    }
 
+    public void setAnswerTime(long answerTime) {
+        this.answerTime = answerTime;
+    }
 
     //attributes
     private String description;
-    private double answerTime;
+    private long answerTime;
     private boolean answered;
     private boolean correct;
 }
