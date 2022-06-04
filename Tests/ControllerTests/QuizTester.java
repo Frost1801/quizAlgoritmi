@@ -15,6 +15,7 @@ import java.util.Vector;
 
 public class QuizTester {
     public static final int ELEMENTS = 5;
+    public static final int PAUSETIME = 200;
 
     @Before
     public void setup (){
@@ -69,27 +70,27 @@ public class QuizTester {
     @Test
     public void questionTimeUpdateWorks () throws InterruptedException {
         tested.starQuiz();
-        Thread.sleep(100);
+        Thread.sleep(PAUSETIME);
         tested.questionForward();
-        Assert.assertEquals("Answer time does not match",100,tested.getQuestionAt(0).getAnswerTime());
+        Assert.assertEquals("Answer time does not match",PAUSETIME,tested.getQuestionAt(0).getAnswerTime());
     }
     @Test
     public void quizTotalTimeUpdateWorks () throws InterruptedException {
         tested.starQuiz();
-        Thread.sleep(100);
+        Thread.sleep(PAUSETIME);
         tested.questionForward();
-        Assert.assertEquals("Total time time does not match",100,tested.getTotalQuizTime());
+        Assert.assertEquals("Total time time does not match",PAUSETIME,tested.getTotalQuizTime());
     }
     @Test
     public void quizQuestionBackWorks ()throws InterruptedException{
         tested.starQuiz();
-        Thread.sleep(100);
+        Thread.sleep(PAUSETIME);
         tested.questionForward();
-        Thread.sleep(50);
+        Thread.sleep(PAUSETIME);
         tested.questionBackward();
-        Thread.sleep(100);
+        Thread.sleep(PAUSETIME);
         tested.questionForward();
-        Assert.assertEquals("Answer time does not match",200,tested.getQuestionAt(0).getAnswerTime());
+        Assert.assertEquals("Answer time does not match",2*PAUSETIME,tested.getQuestionAt(0).getAnswerTime());
     }
 
 
