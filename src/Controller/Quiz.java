@@ -66,7 +66,7 @@ public class Quiz {
     private void updateQuestionTime(){
         //sets the finish time
         long questionFinishTime = System.currentTimeMillis();
-        long additionalTime = questionFinishTime - questionStartTime;
+        long additionalTime = questionFinishTime - questionStartTime; //calculates the difference between previous and final time
         long previousTime =  questions.get(order[currentQuestionN]).getAnswerTime();
         questions.get(order[currentQuestionN]).setAnswerTime(previousTime + additionalTime);
         totalQuizTime += additionalTime;

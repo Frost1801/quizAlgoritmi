@@ -17,6 +17,9 @@ public class QuestionTester {
         Assert.assertFalse(tested.isAnswered());
     }
 
+    public void answerTimeIsZero (){
+        Assert.assertEquals("Answer time is not zero",0,tested.getAnswerTime());
+    }
     Question tested;
 
 }

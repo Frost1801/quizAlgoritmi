@@ -80,7 +80,17 @@ public class QuizTester {
         tested.questionForward();
         Assert.assertEquals("Total time time does not match",100,tested.getTotalQuizTime());
     }
-
+    @Test
+    public void quizQuestionBackWorks ()throws InterruptedException{
+        tested.starQuiz();
+        Thread.sleep(100);
+        tested.questionForward();
+        Thread.sleep(50);
+        tested.questionBackward();
+        Thread.sleep(100);
+        tested.questionForward();
+        Assert.assertEquals("Answer time does not match",200,tested.getQuestionAt(0).getAnswerTime());
+    }
 
 
     Quiz tested;
