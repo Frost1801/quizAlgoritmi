@@ -2,8 +2,11 @@ package View;
 
 import View.Frame.MainFrame;
 
+import java.awt.*;
+
 public class GUI {
 
+    public static String GENERAL_FONT = "Dialog";
 
 
 

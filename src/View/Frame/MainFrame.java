@@ -26,11 +26,13 @@ public class MainFrame extends JFrame {
 
     }
 
+    //adds a colored border to the destination frame
     private void addColorBorder (JFrame destination, Color borderColor){
         MatteBorder matteBorder = new MatteBorder(MainFrame.BORDER_SIZE, MainFrame.BORDER_SIZE, MainFrame.BORDER_SIZE, MainFrame.BORDER_SIZE, borderColor);
         destination.getRootPane().setBorder(matteBorder);
     }
 
+    //creates and adds a QuestionPanel to the frame
     public void addQuestionPanel(){
         questionPanel = new QuestionPanel();
         this.add(questionPanel,BorderLayout.CENTER);
