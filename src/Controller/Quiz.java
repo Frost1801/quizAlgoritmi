@@ -37,13 +37,14 @@ public class Quiz {
 
     public void starQuiz (){
         currentQuestionN = 0;
-        questionStartTime = System.currentTimeMillis();
+        startTimer();
     }
 
     public void questionForward (){
         if (currentQuestionN  < nOfQuestions - 1) {
             updateQuestionTime();
             currentQuestionN++;
+            startTimer();
         }
         else {
             throw new IndexOutOfBoundsException ("Tried to move question index over maximum index");
@@ -55,6 +56,7 @@ public class Quiz {
         if (currentQuestionN>0){
             updateQuestionTime();
             currentQuestionN--;
+            startTimer();
         }
         else {
             throw new IndexOutOfBoundsException ("Tried to move question index under 0");
@@ -70,7 +72,17 @@ public class Quiz {
         long previousTime =  questions.get(order[currentQuestionN]).getAnswerTime();
         questions.get(order[currentQuestionN]).setAnswerTime(previousTime + additionalTime);
         totalQuizTime += additionalTime;
+    }
+
+    //starts the timer
+    public void startTimer (){
         questionStartTime = System.currentTimeMillis();
+        paused = false;
+    }
+    //pauses the timer
+    public void pauseTimer (){
+        paused = true;
+        updateQuestionTime();
     }
 
 
@@ -99,7 +111,11 @@ public class Quiz {
         return order;
     }
 
-    //attributes
+    public boolean isPaused() {
+        return paused;
+    }
+
+//attributes
 
     private Integer [] order;
     private int currentQuestionN;
@@ -109,4 +125,6 @@ public class Quiz {
     //used to measure how much time it takes to
     long questionStartTime;
     long totalQuizTime;
+
+    private boolean paused;
 }

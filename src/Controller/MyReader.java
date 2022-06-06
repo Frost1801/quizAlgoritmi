@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Vector;
 
 public class MyReader {
 
@@ -40,6 +41,20 @@ public class MyReader {
         reader.close();
         is.close();
         return combined.toString();
+    }
+
+    //method to read txt files and place the output in a string vector
+    public void readTxtFile (String filePath, Vector<String> destination)  throws IOException {
+        InputStream is = MyReader.class.getResourceAsStream(filePath);
+        assert is != null;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        String line;
+        while ((line = reader.readLine()) != null)
+        {
+            destination.add(line);
+        }
+        reader.close();
+        is.close();
     }
 
 }

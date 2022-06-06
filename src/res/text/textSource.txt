@@ -1,0 +1,145 @@
+Differenza tra induzione e invariante di ciclo
+Modi per rappresentare albero binario
+Invariante di ciclo abr
+Ricorrenza di mergesort
+Programmazione dinamica
+Hash con concatenamento vs indirizzamento aperto
+Lcs e teorema della sottostruttura ottima significa con dimostrazione
+Ricerca nell'albero binario
+Heap
+Cos'è un algoritmo randomizzato
+Fixup dell'albero rn: perché il nodo inserito è rosso?
+Hash perfetto
+Scc: definizione, algoritmo e correttezza
+Algoritmo delle scc come ordinamento topologico del grafo delle componenti connesse
+Mst
+Os-select iterativo
+Definizione di abr
+Definizione albero rosso nero
+Definizione di ricorsione
+Il problema delle assunzioni
+Ricorrenza del mergesort
+Funzione tree successor
+Cosa è l’invariante di ciclo
+Pseudo codice e correttezza de fattoriale
+Strutture dati aumentate
+Posso aumentare tabelle hash?
+Teorema costo O(lg n) se aggiungo attributo f ai nodi di un albero RN
+Aggiornamento di size in fixup
+Definizione componenti fortemente connesse
+In che tipo di grafo si applicano
+algoritmo per trovare le scc + correttezza
+Definizione Heap
+Albero completo (tutte le foglie hanno la stessa distanza dalla radice)
+Albero quasi completo (tutte le foglie hanno distanza dalla radice che differisce al più di 1)
+Programmazione dinamica
+LCS
+Sottostruttura ottima
+Calcolo prodotto matrici
+Metodo iterativo
+Metodo ricorsivo con pseudocodice
+Ricorrenza
+Insertion sort
+Albero di decisione per insertion sort
+ABR con array anzichè con nodi con puntatori, si può fare? (si ma si spreca molto spazio, se vado ad inserire solo valori in ordine crescente creo un solo ramo e il resto dei nodi nell'array rimangono vuoti, occupando spazio)
+Chiavi duplicate in ABR
+Attraversamento in ABR
+Serializzazione ABR
+Cosa ottengo con una DFS
+QuickSort, spiegare caso peggiore con albero di ricorsione
+Counting Sort, come faccio ad inserire valori < 0 (prendo il min tra i valori e faccio un offset su C)
+Definizione algoritmo di ordinamento stabile
+quali sono gli alg. di ord. Stabili
+Componenti connesse di un grafo
+Pseudocodice
+spiegare cosa sono make-set, find-set, union (strutt. dati per ins. disgiunti)
+Hash con indirizzamento aperto
+pseudocodice
+cos'è h(k,i)
+discussione sui tipi di esplorazioni e hash uniforme quasi impossibile da implementare
+ABR
+Come ottenere valori in ordine decrescente
+2 modi, eseguo prima il post-order, stampo, e poi il pre-order, altrimenti salvo i valori da salvare in testa a una lista e stampo la lista
+lo stesso metodo di aggiungere in testa viene utilizzato in? (ordinamento topologico)
+in quali altri algoritmi può servire scorrere gli elementi in direzione opposta? (LCS)
+Funzioni hash
+Metodo divisioni
+Metodo moltiplicazioni
+Perchè il metodo delle moltiplicazioni viene utilizzato nonostante sia più oneroso? (m spesso in memoria finisce per essere una potenza intera di 2, ma soprattutto nelle tabelle hash dinamiche ho m che varia e il suo valore non deve essere critico)
+Implementazione del calcolo di k in metodo delle moltiplicazioni
+Algoritmo SCC
+come posso contare le SCC? (incremento un counter ogni volta che chiamo DFS-Visit in DFS)
+Voto non sufficiente -> 22 (durata: 20/30 min)
+attraversamento DFS sull’es del compito
+Che proprietà posso scoprire con DFS su un grafo
+Che albero/i ottengo dall’attraversamento DFS
+Oltre ai tempi di inizio e fine cosa restituisce DFS
+Cosa significa che un Albero rosso nero è bilanciato
+Cosa posso dire sull’albero rosso nero riguardo l’altezza
+Perché scelgo un albero rosso nero piuttosto di un ABR
+Cosa sono le tabelle di indirizzamento diretto
+Quando posso usare una tabella ad indirizzamento diretto e quando no
+Cosa sono le tabelle hash
+Con 200 chiavi quanto la faccio grande la tabella hash
+Come posso gestire le collisioni
+Indirizzamento aperto, quanto la faccio grande la tabella
+Quando costa la ricerca senza successo quando la tabella è piena
+Con un fattore di caricamento di 80% quanto costa la ricerca
+Non so che voto ha preso -> 21 (Durata =  30 min)
+Altezza dell’albero rosso nero
+Programmazione dinamica: che problemi abbiamo visto (taglio delle assi, LCS, Edit-distance)
+Problema del taglio delle aste (non ha chiesto gli algoritmi)
+In quanti modi posso tagliare l’asta (2^n)
+Sapendo i costi dei tagli (escluso il taglio massimo) ma nonso a quanto corrispondono, come posso garantire di scegliere sempre il taglio intero per il guadagno massimo
+Formulazione della sottostruttura ottima
+Un’altra formulazione della struttura ottima (non ho capito cosa non andava in quella di prima)
+Attraverso degli alberi dinari di ricerca (sono 3)
+Quale è il più comodo (in order)
+Scrivi in order
+Come scrivere inverse order senza scambiare le chiamate ricorsive
+Perché non posso usare una tabella hash (per scoprire la pos di un elemento devo scorrerla tutta (credo))
+Quanto costa insertion sort
+Fare il grafo dell’ultimo es (non so quale sia)
+Che tipo di grafo è
+Com’è la matrice di adiacenza di un grafo fortemente connesso (simmetrico rispetto alla diag)
+BFS della tabella
+differenza tra BFS e DFS
+Quando eseguo BFS che struttura dati utilizzo? (Coda)
+Cosa posso dire sui nodi presenti in questa struttura dati (sono in ordine non decrescente?)
+Costo di ricerca hash con concatenamento
+Perché costano uguale ricerca con successo e insuccesso
+Dimostrazione ricerca con successo (senza il calcolone finale)
+Cosa si può dire sul costo degli algoritmi di ordinamento non basati sul confronto
+Quando il counting sort è meglio di quelli basati sul confronto
+Costo degli algoritmi di ordinamento
+Costo nlogn nel migliore dei casi peggiori, si può dimostrare?
+Albero di ricorsione
+Albero di decisone
+Altezza albero decisione
+Teorema parentesi
+Mst
+Non so quanto ha preso -> 26 (durata= 25min)
+Definizione di albero binario di ricerca
+algoritmo DFS
+Logriamo che usa DFS
+Nell’ algoritmo per calcolare le SCC come scorre gli elementi la seconda chiamata a DFS
+Hash con indirizzamento aperto
+Funzioni di scansione
+Quali modi ci sono per avere una scansione lineare
+K può essere qualsiasi valore? (Minore o uguale della dimensione della tabella)
+Come scelgo la dimensione della tabella? Posso sceglierlo in modo che non mi interessi come scelto k? (Primo => k non può essere un multiplo)
+Invariante di ciclo
+In Che tipo di algoritmi posso usare l’invariante di ciclo per dimostrare la correttezza? (Se sono iterativi)
+In che caso posso usarla per dimostrare la correttezza di un algoritmo ricorsivo (se posso trasformarlo in iterativo, ovvero quando la ricorsione è unica e alla fine del corpo di esecuzione? (è “abbastanza” lineare))
+Cosa devo dimostrare nell’ invariante di ciclo (se è vera prima, lo è anche durante e dopo)
+Rappresentazione albero binario in un array, perché nell’heap si fa e negli abr no.
+Algoritmo per le componenti fortemente connesse.
+Dimostrare la correttezza dell’algoritmo.
+Definizione abr e proprietà.
+Strutture dati per insiemi disgiunti.
+Algoritmo per le componenti connesse.
+Cosa sono make set, union e find.
+Cosa sono le componenti connesse e le componenti fortemente connesse.
+Attraversamenti in abr(post order, in order, pre order).
+Come stampare in ordine decrescente (invertire le chiamate ricorsive oppure usare stack o lista collegata che inserisce in testa il valore).
+In quale algoritmo si scorre l’array al contrario?(lcs)
