@@ -15,7 +15,7 @@ import java.util.Vector;
 
 public class QuizTester {
     public static final int ELEMENTS = 5;
-    public static final int PAUSETIME = 200;
+    public static final int PAUSETIME = 100;
 
     @Before
     public void setup (){

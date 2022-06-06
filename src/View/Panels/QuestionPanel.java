@@ -1,14 +1,15 @@
 package View.Panels;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
-public class TestPanel extends JPanel{
+public class QuestionPanel extends JPanel{
 
-    public TestPanel (){
-        testPanelHolder = new JPanel();
+    public QuestionPanel(){
+        this.setLayout(new BorderLayout());
         addSurfacePanels();
-        testPanelHolder.setVisible(true);
+        this.setVisible(true);
     }
 
     private void addSurfacePanels (){
@@ -18,10 +19,13 @@ public class TestPanel extends JPanel{
 
         addTemporaryColors();
 
-        testPanelHolder.add(topPanel, BorderLayout.NORTH);
-        testPanelHolder.add(centerPanel,BorderLayout.CENTER);
-        testPanelHolder.add(bottomPanel,BorderLayout.SOUTH);
 
+
+        this.add(topPanel, BorderLayout.NORTH);
+        this.add(centerPanel,BorderLayout.CENTER);
+        this.add(bottomPanel,BorderLayout.SOUTH);
+
+        setSurfacePanelsVisible(true);
 
 
     }
@@ -33,8 +37,12 @@ public class TestPanel extends JPanel{
         bottomPanel.setBackground(Color.green);
     }
 
+    private void setSurfacePanelsVisible (boolean visible){
+        topPanel.setVisible(visible);
+        centerPanel.setVisible(visible);
+        bottomPanel.setVisible(visible);
+    }
 
-    private JPanel testPanelHolder;
 
     private JButton previousQuestion;
     private JButton nextQuestion;
