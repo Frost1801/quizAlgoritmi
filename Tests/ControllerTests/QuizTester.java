@@ -92,6 +92,18 @@ public class QuizTester {
         tested.questionForward();
         Assert.assertEquals("Answer time does not match",2*PAUSETIME,tested.getQuestionAt(0).getAnswerTime());
     }
+    @Test
+    public void quizPauseWorks () throws InterruptedException {
+        tested.starQuiz();
+        Thread.sleep(PAUSETIME);
+        tested.pauseTimer();
+        Thread.sleep(PAUSETIME);
+        tested.startTimer();
+        Thread.sleep(PAUSETIME);
+        tested.pauseTimer();
+        Assert.assertEquals("Answer time does not match",2*PAUSETIME,tested.getQuestionAt(0).getAnswerTime());
+    }
+
 
 
     Quiz tested;
