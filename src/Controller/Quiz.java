@@ -10,6 +10,7 @@ public class Quiz {
         //sets current question as 0
         currentQuestionN = 0;
         totalQuizTime = 0;
+        answered = 0;
 
         //loads the questions inside the map
         questions = new HashMap<>();
@@ -85,6 +86,10 @@ public class Quiz {
         updateQuestionTime();
     }
 
+    public void answerQuestion (){
+        answered+=1;
+    }
+
 
     //getters and setters
     public Question getQuestionAt (int key){
@@ -115,11 +120,16 @@ public class Quiz {
         return paused;
     }
 
-//attributes
+    public int getAnswered() {
+        return answered;
+    }
+
+    //attributes
 
     private Integer [] order;
     private int currentQuestionN;
     private int nOfQuestions;
+    private int answered;
     private HashMap<Integer, Question> questions;
 
     //used to measure how much time it takes to

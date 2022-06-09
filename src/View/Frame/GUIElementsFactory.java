@@ -12,16 +12,24 @@ public class GUIElementsFactory {
 
 
     //creates a text label
-    public static JLabel createStandardLabel(String text, Color color, int size){
+    public static JLabel createStandardLabel(String text, Color color, int size,boolean centerAligned){
         JLabel toReturn = new JLabel(addHTML(text));
         toReturn.setFont(new Font (GUI.GENERAL_FONT,Font.BOLD,size));
         toReturn.setForeground(color);
+        if (centerAligned)
+            toReturn.setHorizontalAlignment(JLabel.CENTER);
         return toReturn;
     }
     //creates a button with an image
     public static JButton createJButtonWithImage (String path, Color backgroundColor, double ratio){
         JButton toReturn = new JButton();
         toReturn.setIcon(GUI.getFixedDimensionImage(path, ratio));
+        toReturn.setBackground(backgroundColor);
+        toReturn.setFocusable(false);
+        return toReturn;
+    }
+    public static JButton createJButtonWithText (String description, Color backgroundColor){
+        JButton toReturn = new JButton(description);
         toReturn.setBackground(backgroundColor);
         toReturn.setFocusable(false);
         return toReturn;
