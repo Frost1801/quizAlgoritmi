@@ -1,9 +1,11 @@
 package View.Panels;
 
 import Controller.Quiz;
+import Model.Question;
 import View.Colors;
 import View.Frame.GUIElementsFactory;
 import View.GUI;
+import javafx.scene.layout.Background;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,8 +55,9 @@ public class QuestionPanel extends JPanel implements ActionListener {
         centerPanel = new JPanel(new BorderLayout());
         bottomPanel = new JPanel(new BorderLayout());
 
-        addTemporaryColors();
-
+        topPanel.setBackground(Colors.FOREGROUND.getColor());
+        centerPanel.setBackground(Colors.BACKGROUND.getColor());
+        bottomPanel.setBackground(Colors.ACCENT.getColor());
 
 
         add(topPanel, BorderLayout.NORTH);
@@ -67,8 +70,15 @@ public class QuestionPanel extends JPanel implements ActionListener {
     //adds second level panels
     private void addSecondLevelPanels (){
         timeIndicationHolder = new JPanel(new GridBagLayout());
+
+
         navigationButtonsHolder = new JPanel(new GridBagLayout());
         pageIndicationNumbersHolder = new JPanel(new GridBagLayout());
+
+
+        timeIndicationHolder.setBackground(Colors.BARS.getColor());
+        pageIndicationNumbersHolder.setBackground(Colors.BARS.getColor());
+        navigationButtonsHolder.setBackground(Colors.FOREGROUND.getColor());
 
 
         addTitle();
@@ -84,7 +94,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     //adds title to the topPanel
     private void addTitle (){
-        title = GUIElementsFactory.createStandardLabel(QUIZ_TITLE, Colors.TITLE.getColor(),GUIElementsFactory.TITLE_SIZE,true);
+        title = GUIElementsFactory.createStandardLabel(QUIZ_TITLE, Colors.TITLE.getColor(),GUIElementsFactory.LARGE_TEXT_SIZE,true,true);
         topPanel.add(title,BorderLayout.CENTER);
     }
 
@@ -115,7 +125,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
     //adds elapsed question time label
     private void addQuestionElapsedTime  (){
-        questionElapsedTime = GUIElementsFactory.createStandardLabel("0:19",Colors.TEXT.getColor(), GUIElementsFactory.MEDIUM_TEXT_SIZE,false);
+        questionElapsedTime = GUIElementsFactory.createStandardLabel("0:19",Colors.TEXT.getColor(), GUIElementsFactory.MEDIUM_TEXT_SIZE,false,false);
         timeIndicationHolder.add(questionElapsedTime,GUIElementsFactory.createGridBagConstraint(0,0,GRID_TOP_SPACING, MEDIUM_GRID_LEFT_SPACING,GRID_BOTTOM_SPACING, MEDIUM_GRID_RIGHT_SPACING));
     }
 
@@ -128,7 +138,7 @@ public class QuestionPanel extends JPanel implements ActionListener {
     }
     //adds total time JLabel
     private void addTotalElapsedTime(){
-        totalElapsedTime = GUIElementsFactory.createStandardLabel("3:24",Colors.TEXT.getColor(), GUIElementsFactory.MEDIUM_TEXT_SIZE,false);
+        totalElapsedTime = GUIElementsFactory.createStandardLabel("3:24",Colors.TEXT.getColor(), GUIElementsFactory.MEDIUM_TEXT_SIZE,false,false);
         timeIndicationHolder.add(totalElapsedTime,GUIElementsFactory.createGridBagConstraint(2,0,GRID_TOP_SPACING, MEDIUM_GRID_LEFT_SPACING,GRID_BOTTOM_SPACING, MEDIUM_GRID_RIGHT_SPACING));
     }
     //saves play/pause icons to avoid loading them every time
@@ -150,13 +160,13 @@ public class QuestionPanel extends JPanel implements ActionListener {
     //CENTER PANEL METHODS
     private void addQuestionText (){
         String questionDescription = managed.getQuestionAt(managed.getCurrentQuestionN()).getDescription();
-        questionText = GUIElementsFactory.createStandardLabel(questionDescription,Colors.TEXT.getColor(),GUIElementsFactory.MEDIUM_TEXT_SIZE,true);
+        questionText = GUIElementsFactory.createStandardLabel(questionDescription,Colors.TEXT.getColor(),GUIElementsFactory.VERY_LARGE_TEXT_SIZE,true,true);
         centerPanel.add(questionText,BorderLayout.CENTER);
     }
 
     private void addAnsweredNumber (){
         int number = managed.getAnswered();
-        answered = GUIElementsFactory.createStandardLabel(Integer.toString(number),Colors.TEXT.getColor(),GUIElementsFactory.MEDIUM_TEXT_SIZE,false);
+        answered = GUIElementsFactory.createStandardLabel(Integer.toString(number),Colors.TEXT.getColor(),GUIElementsFactory.MEDIUM_TEXT_SIZE,false,false);
         GridBagConstraints gbc = GUIElementsFactory.createGridBagConstraint(0,0,GRID_TOP_SPACING, BIG_GRID_LEFT_SPACING,GRID_BOTTOM_SPACING, BIG_GRID_RIGHT_SPACING);
         pageIndicationNumbersHolder.add(answered,gbc);
     }
@@ -165,14 +175,14 @@ public class QuestionPanel extends JPanel implements ActionListener {
         int current = managed.getCurrentQuestionN();
         int total = managed.getNOfQuestions();
         String combined = current + "/" + total;
-        currentToTotal = GUIElementsFactory.createStandardLabel(combined,Colors.TEXT.getColor(),GUIElementsFactory.MEDIUM_TEXT_SIZE,false);
+        currentToTotal = GUIElementsFactory.createStandardLabel(combined,Colors.TEXT.getColor(),GUIElementsFactory.MEDIUM_TEXT_SIZE,false,false);
         GridBagConstraints gbc = GUIElementsFactory.createGridBagConstraint(1,0,GRID_TOP_SPACING, BIG_GRID_LEFT_SPACING,GRID_BOTTOM_SPACING, BIG_GRID_RIGHT_SPACING);
         pageIndicationNumbersHolder.add(currentToTotal,gbc);
     }
 
     //BOTTOM PANEL METHODS
     private void addHowToAnswer (){
-        howToAnswer = GUIElementsFactory.createStandardLabel(howToAnswerText,Colors.TEXT.getColor(), GUIElementsFactory.MEDIUM_TEXT_SIZE,true);
+        howToAnswer = GUIElementsFactory.createStandardLabel(howToAnswerText,Colors.TEXT.getColor(), GUIElementsFactory.MEDIUM_TEXT_SIZE,true,false);
         bottomPanel.add(howToAnswer,BorderLayout.NORTH);
     }
 
@@ -180,25 +190,29 @@ public class QuestionPanel extends JPanel implements ActionListener {
     private void addPreviousQuestion () {
         leftButton = GUIElementsFactory.createJButtonWithImage(LEFT_IMG_PATH,Colors.BUTTON.getColor(),ICONS_RATIO);
         GridBagConstraints gbc = GUIElementsFactory.createGridBagConstraint(0,0,GRID_TOP_SPACING, SMALL_GRID_LEFT_SPACING,GRID_BOTTOM_SPACING, SMALL_GRID_RIGHT_SPACING);
+        leftButton.addActionListener(this);
         navigationButtonsHolder.add(leftButton,gbc);
     }
     private void addNextQuestion () {
         rightButton = GUIElementsFactory.createJButtonWithImage(RIGHT_IMG_PATH,Colors.BUTTON.getColor(),ICONS_RATIO);
         GridBagConstraints gbc = GUIElementsFactory.createGridBagConstraint(3,0,GRID_TOP_SPACING, SMALL_GRID_LEFT_SPACING,GRID_BOTTOM_SPACING, SMALL_GRID_RIGHT_SPACING);
+        rightButton.addActionListener(this);
         navigationButtonsHolder.add(rightButton,gbc);
     }
     private void addCheck () {
         check = GUIElementsFactory.createJButtonWithImage(CHECK_IMG_PATH,Colors.BUTTON.getColor(),ICONS_RATIO);
         GridBagConstraints gbc = GUIElementsFactory.createGridBagConstraint(1,0,GRID_TOP_SPACING, SMALL_GRID_LEFT_SPACING,GRID_BOTTOM_SPACING, 0);
+        check.addActionListener(this);
         navigationButtonsHolder.add(check,gbc);
     }
     private void addXButton () {
         x_button = GUIElementsFactory.createJButtonWithImage(REMOVE_IMG_PATH,Colors.BUTTON.getColor(),ICONS_RATIO);
         GridBagConstraints gbc = GUIElementsFactory.createGridBagConstraint(2,0,GRID_TOP_SPACING, 0,GRID_BOTTOM_SPACING, SMALL_GRID_RIGHT_SPACING);
+        x_button.addActionListener(this);
         navigationButtonsHolder.add(x_button,gbc);
     }
     private void addTerminateQuiz (){
-        terminateQuiz = GUIElementsFactory.createJButtonWithText(terminateQuizText,Colors.BUTTON.getColor());
+        terminateQuiz = GUIElementsFactory.createJButtonWithText(terminateQuizText,Colors.BUTTON.getColor(),Colors.TEXT.getColor());
         GridBagConstraints gbc = GUIElementsFactory.createGridBagConstraint(1,1,GRID_TOP_SPACING, SMALL_GRID_LEFT_SPACING,GRID_BOTTOM_SPACING, SMALL_GRID_RIGHT_SPACING);
         gbc.gridwidth = 2; 
         navigationButtonsHolder.add(terminateQuiz,gbc);
@@ -206,28 +220,42 @@ public class QuestionPanel extends JPanel implements ActionListener {
 
 
 
+    private void updateQuestionText (){
+        questionText.setText(GUIElementsFactory.addHTML (managed.getQuestionAt(managed.getCurrentQuestionN()).getDescription()));
+    }
+    private void updateCurrentToTotal () {
+        int current = managed.getCurrentQuestionN();
+        int total = managed.getNOfQuestions();
+        String combined = current + "/" + total;
+        currentToTotal.setText(combined);
+    }
+    private void updateCheckX (){
+        Question tmp = managed.getQuestionAt(managed.getCurrentQuestionN());
+        if (tmp.isAnswered()){
+            if (tmp.isCorrect()){
+                check.setBackground(Colors.SELECTED.getColor());
+                x_button.setBackground(Colors.BUTTON.getColor());
+            }
+            else {
+                x_button.setBackground(Colors.SELECTED.getColor());
+                check.setBackground(Colors.BUTTON.getColor());
+            }
+        }
+        else{
+            check.setBackground(Colors.BUTTON.getColor());
+            x_button.setBackground(Colors.BUTTON.getColor());
+        }
+    }
+
+    private void updateAnswered (){
+        answered.setText(Integer.toString(managed.getAnswered()));
+    }
+
+
 
 
     //helper colors
-    private void addTemporaryColors (){
-        topPanel.setBackground(Color.blue);
-        centerPanel.setBackground(Color.MAGENTA);
-        bottomPanel.setBackground(Color.green);
-    }
 
-    private void setSurfacePanelsVisible (boolean visible){
-        topPanel.setVisible(visible);
-        centerPanel.setVisible(visible);
-        bottomPanel.setVisible(visible);
-    }
-
-
-    private JButton leftButton;
-    private JButton rightButton;
-    private JButton check;
-    private JButton x_button;
-    private JButton pauseResume;
-    private JButton terminateQuiz;
 
     private JLabel answered;
     private JLabel currentToTotal;
@@ -252,6 +280,13 @@ public class QuestionPanel extends JPanel implements ActionListener {
     private ImageIcon pauseIcon;
     private ImageIcon playIcon;
 
+    private JButton leftButton;
+    private JButton rightButton;
+    private JButton check;
+    private JButton x_button;
+    private JButton pauseResume;
+    private JButton terminateQuiz;
+
     private Quiz managed;
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -266,6 +301,28 @@ public class QuestionPanel extends JPanel implements ActionListener {
                 managed.pauseTimer();
                 togglePlayPauseIcon();
             }
+        }
+        if (e.getSource() == leftButton){
+            managed.questionBackward();
+            updateCurrentToTotal();
+            updateQuestionText();
+            updateCheckX();
+        }
+        if (e.getSource() == rightButton){
+            managed.questionForward();
+            updateCurrentToTotal();
+            updateQuestionText();
+            updateCheckX();
+        }
+        if (e.getSource() == check){
+            managed.answer(true);
+            updateAnswered();
+            updateCheckX();
+        }
+        if (e.getSource() == x_button){
+            managed.answer(false);
+            updateAnswered();
+            updateCheckX();
         }
     }
 }

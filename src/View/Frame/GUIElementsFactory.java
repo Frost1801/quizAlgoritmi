@@ -6,14 +6,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUIElementsFactory {
-    public static final int TITLE_SIZE = 35;
+
+    public static final int VERY_LARGE_TEXT_SIZE = 45;
+    public static final int LARGE_TEXT_SIZE = 35;
     public static final int MEDIUM_TEXT_SIZE = 18;
     public static final int SMALL_TEXT_SIZE = 12;
 
 
     //creates a text label
-    public static JLabel createStandardLabel(String text, Color color, int size,boolean centerAligned){
-        JLabel toReturn = new JLabel(addHTML(text));
+    public static JLabel createStandardLabel(String text, Color color, int size,boolean centerAligned,boolean addHTML){
+        JLabel toReturn = new JLabel();
+        if (addHTML) {
+            toReturn.setText(addHTML(text));
+        }
+        else {
+            toReturn.setText(text);
+        }
+
         toReturn.setFont(new Font (GUI.GENERAL_FONT,Font.BOLD,size));
         toReturn.setForeground(color);
         if (centerAligned)
@@ -28,9 +37,10 @@ public class GUIElementsFactory {
         toReturn.setFocusable(false);
         return toReturn;
     }
-    public static JButton createJButtonWithText (String description, Color backgroundColor){
+    public static JButton createJButtonWithText (String description, Color backgroundColor, Color foregroundColor){
         JButton toReturn = new JButton(description);
         toReturn.setBackground(backgroundColor);
+        toReturn.setForeground(foregroundColor);
         toReturn.setFocusable(false);
         return toReturn;
     }
@@ -46,9 +56,8 @@ public class GUIElementsFactory {
 
 
 
-
     public static String addHTML (String toReturn){
-        return  "<html><body style='text-align: center'><p>" + toReturn + "</p></html>";
+        return  "<html><body style='text-align: center'><p style=\"width:600px\">" + toReturn + "</p></html>";
     }
 
 

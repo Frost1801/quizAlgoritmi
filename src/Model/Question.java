@@ -34,6 +34,14 @@ public class Question {
         this.answerTime = answerTime;
     }
 
+    public boolean isCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
+    }
+
     //attributes
     private String description;
     private long answerTime;

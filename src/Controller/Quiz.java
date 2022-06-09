@@ -86,9 +86,14 @@ public class Quiz {
         updateQuestionTime();
     }
 
-    public void answerQuestion (){
-        answered+=1;
+    public void answer (boolean correct) {
+        Question question = questions.get(order[currentQuestionN]);
+        if (!question.isAnswered())
+            answered += 1;
+        question.setAnswered(true);
+        question.setCorrect(correct);
     }
+
 
 
     //getters and setters
@@ -123,6 +128,7 @@ public class Quiz {
     public int getAnswered() {
         return answered;
     }
+
 
     //attributes
 
